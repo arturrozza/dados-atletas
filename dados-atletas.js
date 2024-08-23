@@ -25,5 +25,49 @@ class Atleta {
         return this.peso / (this.altura * this.altura)
     }
 
+    calculaMediaValida() {
+       let notasOrdenadas = this.notas.sort((a, b) => a - b);
+       let notasValidas = notasOrdenadas.slice(1, notasOrdenadas.length - 1);
+       let soma = notasValidas.reduce((total, nota) => total + nota, 0);
+       return soma / notasValidas.length;
+    }
 
+    obtemNomeAtleta() {
+        return this.nome
+    }
+
+    obtemIdadeAtleta() {
+        return this.idade
+    }
+
+    obtemPesoAtleta() {
+        return this.peso
+    }
+
+    obtemNotasAtleta() {
+        return this.notas
+    }
+
+    obtemCategoria() {
+        return this.calculaCategoria()
+    }
+
+    obtemIMC() {
+        return this.calculaIMC()
+    }
+
+    obtemMediaValida() {
+        return this.calculaMediaValida()
+    }
 }
+
+const atleta = new Atleta("Cesar Abascal", 30, 80, 1.70, [10, 9.34, 8.42, 10, 7.88]);
+
+console.log(`Nome: ${atleta.obtemNomeAtleta()}`);
+console.log(`Idade: ${atleta.obtemIdadeAtleta()}`);
+console.log(`Peso: ${atleta.obtemPesoAtleta()}`);
+console.log(`Altura: ${atleta.altura}`);
+console.log(`Notas: ${atleta.obtemNotasAtleta().join(",")}`);
+console.log(`Categoria: ${atleta.obtemCategoria()}`);
+console.log(`IMC: ${atleta.obtemIMC()}`);
+console.log(`Média válida: ${atleta.obtemMediaValida()}`);
